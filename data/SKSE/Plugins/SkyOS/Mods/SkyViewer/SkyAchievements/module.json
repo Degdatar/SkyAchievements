@@ -1,0 +1,73 @@
+{
+  "name": "SkyAchievements",
+  "description": "Achievement art and adventure-history records",
+  "icon": "✦",
+  "accent": "#dcad66",
+  "requiredCore": "SkyOS.dll",
+  "appPlugin": "SkyAchievements.dll",
+  "showInSkyApps": true,
+  "settings": [
+    {
+      "id": "openHotkey",
+      "group": "Keyboard shortcuts",
+      "label": "Open SkyAchievements",
+      "type": "hotkey",
+      "default": "",
+      "description": "Open the achievement and adventure-history records."
+    },
+    {
+      "id": "achievementNoticeEnabled",
+      "group": "Achievement unlock message",
+      "label": "Show achievement unlock message",
+      "type": "boolean",
+      "default": true,
+      "description": "Show an in-game message when a new achievement unlocks."
+    },
+    {
+      "id": "achievementNoticeDesign",
+      "group": "Achievement unlock message",
+      "label": "Message design",
+      "type": "select",
+      "default": "celestial",
+      "options": [
+        { "value": "celestial", "label": "Celestial frame" },
+        { "value": "dawnguard", "label": "Dawnguard crest" },
+        { "value": "arcane", "label": "Arcane sigil" },
+        { "value": "minimal", "label": "Minimal" }
+      ],
+      "description": "Choose the layout used for achievement unlock messages."
+    },
+    {
+      "id": "achievementNoticeSize",
+      "group": "Achievement unlock message",
+      "label": "Message size",
+      "type": "select",
+      "default": "standard",
+      "options": [
+        { "value": "large", "label": "Large" },
+        { "value": "standard", "label": "Standard" },
+        { "value": "compact", "label": "Compact" }
+      ],
+      "description": "Set the size of the in-game achievement message."
+    },
+    {
+      "id": "achievementNoticePosition",
+      "group": "Achievement unlock message",
+      "label": "Message position",
+      "type": "select",
+      "default": "top-center",
+      "options": [
+        { "value": "top-left", "label": "Top left" },
+        { "value": "top-center", "label": "Top center" },
+        { "value": "top-right", "label": "Top right" },
+        { "value": "center-left", "label": "Center left" },
+        { "value": "center-center", "label": "Center center" },
+        { "value": "center-right", "label": "Center right" },
+        { "value": "bottom-left", "label": "Bottom left" },
+        { "value": "bottom-center", "label": "Bottom center" },
+        { "value": "bottom-right", "label": "Bottom right" }
+      ],
+      "description": "Choose where the message appears on screen."
+    }
+  ]
+}

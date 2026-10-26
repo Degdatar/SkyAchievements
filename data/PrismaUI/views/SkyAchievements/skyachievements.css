@@ -1,0 +1,530 @@
+/* SkyAchievements page layout, records, and app-owned filters. */
+#skyachievements { max-width:1120px; margin:0 auto; padding:8px 0 28px; }
+#skyachievements .skyachievements-heading { position:relative; isolation:isolate; overflow:hidden; border-color:#9f7c4366; background:linear-gradient(100deg,#121820ed,#1b2028d9); }
+#skyachievements .skyachievements-banner { opacity:.5; filter:saturate(.9); }
+#skyachievements .skyachievements-logo { object-fit:contain; border:0; background:transparent; }
+#skyachievements .skyachievements-panel { padding:16px; border:1px solid #66768166; border-radius:8px; background:linear-gradient(145deg,#171d24,#10151b); }
+#skyachievements .achievement-player-card { display:grid; grid-template-columns:72px minmax(160px,1fr) auto; align-items:center; gap:16px; margin-bottom:4px; padding:18px; border:1px solid #b38a4c88; border-radius:7px; background:radial-gradient(ellipse at 0 0,#bc8b3b29,transparent 40%),linear-gradient(110deg,#252b30,#191e24 60%,#25221d); box-shadow:inset 0 1px #fff2c91a,0 10px 28px #0003; }
+#skyachievements .achievement-player-sigil { display:grid; place-items:center; width:64px; height:64px; border:1px solid #d7b46f88; border-radius:6px; background:#161c22; color:#f1c873; font-size:34px; text-shadow:0 0 15px #e2a74688; }
+#skyachievements .achievement-player-copy { display:grid; gap:6px; }
+#skyachievements .achievement-player-copy small,#skyachievements .achievement-vitals small { color:#d6ad67; font:9px "DM Mono",monospace; letter-spacing:.13em; }
+#skyachievements .achievement-player-copy h2 { margin:0; color:#eef1f2; font-size:23px; }
+#skyachievements .achievement-player-copy span { color:#aab8bd; font:11px "DM Mono",monospace; }
+#skyachievements .achievement-vitals { display:grid; grid-template-columns:repeat(3,minmax(78px,1fr)); gap:7px; }
+#skyachievements .achievement-vitals>div { display:grid; gap:7px; padding:10px; border:1px solid #85939a44; border-radius:4px; background:#11181eb8; }
+#skyachievements .achievement-vitals strong { color:#e6edf0; font:700 17px "DM Mono",monospace; }
+#skyachievements .achievement-section-heading { display:flex; align-items:end; justify-content:space-between; gap:12px; margin:2px 1px 12px; }
+#skyachievements .achievement-section-heading .eyebrow { margin-bottom:5px; color:#d6ad67; }
+#skyachievements .achievement-section-heading h2 { margin:0; font-size:18px; }
+#skyachievements .achievement-section-heading>span { color:#9baab0; font:9px/1.5 "DM Mono",monospace; text-align:right; }
+#skyachievements .achievement-counter-groups { display:grid; gap:14px; }
+#skyachievements .achievement-counter-group { padding:13px; border:1px solid #59687255; border-radius:6px; background:linear-gradient(135deg,#1b242b,#141a20); }
+#skyachievements .achievement-counter-group h3 { margin:0 0 10px; color:#e7c17a; font-size:12px; letter-spacing:.07em; text-transform:uppercase; }
+#skyachievements .achievement-counter-highlights { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:9px; margin:0 0 14px; }
+#skyachievements .achievement-counter-highlight { position:relative; display:grid; gap:7px; min-height:94px; align-content:space-between; overflow:hidden; padding:13px; border:1px solid #b48e5366; border-radius:7px; background:radial-gradient(ellipse at 100% 0,#d9a84b20,transparent 58%),linear-gradient(140deg,#27313a,#171d24 72%); box-shadow:inset 0 1px #fff2d11a,0 8px 20px #0002; }
+#skyachievements .achievement-counter-highlight::after { position:absolute; inset:auto 0 0; height:2px; background:linear-gradient(90deg,#d3a657,#80d6dc88,transparent); content:""; }
+#skyachievements .achievement-counter-highlight span { color:#b9c5ca; font:750 9px "DM Mono",monospace; letter-spacing:.1em; text-transform:uppercase; }
+#skyachievements .achievement-counter-highlight strong { color:#ffe0a2; font:700 25px "DM Mono",monospace; text-shadow:0 0 14px #dfae5c44; }
+#skyachievements .achievement-counter-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:7px; }
+#skyachievements .achievement-counter-card { display:grid; gap:6px; min-height:65px; padding:10px; border:1px solid #66768155; border-radius:5px; background:linear-gradient(135deg,#293640,#1a2026 82%); }
+#skyachievements .achievement-counter-card:hover { border-color:#cba56099; }
+#skyachievements .achievement-counter-card strong { color:#f1d49a; font:700 18px "DM Mono",monospace; }
+#skyachievements .achievement-counter-card span { color:#bdc8cc; font-size:10px; line-height:1.35; }
+#skyachievements .achievement-record-list { display:grid; gap:8px; }
+#skyachievements .achievement-record-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(175px,1fr)); gap:10px; }
+#skyachievements .achievement-record { display:grid; grid-template-rows:auto 132px auto; gap:8px; min-width:0; padding:10px; border:2px solid #87949c; border-radius:6px; background:linear-gradient(145deg,#313a41,#1a2026 48%,#293239); box-shadow:inset 0 1px #ffffff1b; }
+#skyachievements .achievement-record strong { overflow:hidden; color:#edf1f2; font-size:11px; text-overflow:ellipsis; white-space:nowrap; }
+#skyachievements .achievement-record-art { display:grid; place-items:center; overflow:hidden; border:1px solid #65747b88; border-radius:4px; background:#12191f; }
+#skyachievements .achievement-record-art img { width:100%; height:100%; padding:9px; object-fit:contain; }
+#skyachievements #achievement-items .achievement-record { grid-template-rows:auto 150px auto; gap:10px; padding:12px; }
+#skyachievements #achievement-items .achievement-record-art { padding:7px; }
+#skyachievements #achievement-items .achievement-record-art img { padding:13px; }
+#skyachievements .achievement-record-art small { padding:5px; color:#889da5; font:8px "DM Mono",monospace; letter-spacing:.06em; text-align:center; }
+#skyachievements .achievement-record-meta { display:flex; align-items:center; justify-content:space-between; gap:8px; min-width:0; }
+#skyachievements .achievement-record-meta small { overflow:hidden; color:#a2b0b5; font:8px "DM Mono",monospace; text-overflow:ellipsis; white-space:nowrap; }
+#skyachievements .achievement-load-more { display:block; min-height:38px; margin:14px auto 0; padding:9px 16px; border:1px solid #806a43; border-radius:5px; background:#202a31; color:#f1d49a; font:700 10px Manrope,sans-serif; cursor:pointer; }
+#skyachievements .achievement-load-more[hidden] { display:none; }
+#skyachievements .achievement-load-more:hover { border-color:#c6a568; }
+#skyachievements .achievement-rarity { flex:none; color:#e6c27d; font:8px "DM Mono",monospace; text-transform:uppercase; }
+#skyachievements .achievement-record.rarity-uncommon { border-color:#67bd79; background:linear-gradient(145deg,#25402f,#17241c 48%,#263a2d); }
+#skyachievements .achievement-record.rarity-rare { border-color:#69a9ee; background:linear-gradient(145deg,#243b56,#151f2d 48%,#26384d); }
+#skyachievements .achievement-record.rarity-epic { border-color:#e6a04d; background:linear-gradient(145deg,#523720,#2a2018 48%,#47301d); }
+#skyachievements .achievement-record.rarity-legendary { border-color:#e26b68; background:linear-gradient(145deg,#512a2d,#291a1d 48%,#472629); }
+#skyachievements .achievement-quest-record { grid-template-columns:minmax(0,1fr) auto; grid-template-rows:auto auto; align-items:center; }
+#skyachievements .achievement-quest-record>strong { grid-column:1; grid-row:1; }
+#skyachievements .achievement-quest-record .achievement-record-art { display:none; }
+#skyachievements .achievement-quest-record .achievement-record-meta { grid-column:1/-1; grid-row:2; }
+#skyachievements .achievement-quest-record .achievement-record-meta small { font-size:9px; }
+#skyachievements .achievement-empty-state { display:grid; justify-items:center; gap:9px; min-height:260px; align-content:center; text-align:center; }
+#skyachievements .achievement-empty-state>span { color:#e6bd72; font-size:38px; }
+#skyachievements .achievement-empty-state .eyebrow { margin:0; color:#cda967; }
+#skyachievements .achievement-empty-state h2,#skyachievements .achievement-empty-state p { margin:0; }
+#skyachievements .achievement-empty-state>p:last-child { color:#9eabb0; font-size:12px; }
+
+/* Discovery filters and completed quest journal entries. */
+#skyachievements:not(.hidden) {
+  display: grid;
+  grid-template-columns: minmax(175px, 220px) minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr);
+  align-content: start;
+  align-items: start;
+  gap: 14px;
+}
+
+#skyachievements > .skyachievements-heading {
+  grid-column: 1 / -1;
+  margin-bottom: 0;
+}
+
+#skyachievements .skyachievements-tabs {
+  position: sticky;
+  top: 12px;
+  grid-column: 1;
+  grid-row: 2;
+  display: grid;
+  align-content: start;
+  gap: 7px;
+  min-width: 0;
+  margin: 0;
+  padding: 8px;
+  overflow: visible;
+  border: 1px solid #53616b77;
+  border-radius: 8px;
+  background: linear-gradient(145deg, #1b242b, #141a20);
+}
+
+#skyachievements .skyachievements-tabs button {
+  width: 100%;
+  min-height: 42px;
+  padding: 10px 11px;
+  border: 1px solid #8c9ca344;
+  border-radius: 5px;
+  background: linear-gradient(115deg, #323d46, #20282f);
+  color: #cbd5d9;
+  text-align: left;
+  font: 700 10px/1.35 Manrope, sans-serif;
+  letter-spacing: .045em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+#skyachievements .skyachievements-tabs button:hover {
+  border-color: #d1ad6a99;
+  color: #f2dfb8;
+}
+
+#skyachievements .skyachievements-tabs button.active {
+  border-color: #dfb467;
+  background: linear-gradient(115deg, #4a3925, #25221e);
+  color: #ffdc9a;
+  box-shadow: inset 0 0 16px #e9b75718;
+}
+
+#skyachievements > .skyachievements-panel {
+  grid-column: 2;
+  grid-row: 2;
+  min-width: 0;
+}
+
+#skyachievements .achievement-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 10px;
+  margin: 12px 0 16px;
+  padding: 12px;
+  border: 1px solid #34434e;
+  border-radius: 10px;
+  background: linear-gradient(120deg, #101820, #151c24);
+}
+
+#skyachievements .achievement-filter-picker {
+  position: relative;
+  display: grid;
+  gap: 5px;
+  width: clamp(175px, 23vw, 260px);
+  min-width: 155px;
+}
+
+#skyachievements .achievement-filter-picker .skyachievement-picker-label {
+  padding-left: 2px;
+  color: #8495a2;
+  font: 750 9px "DM Mono", monospace;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+#skyachievements .achievement-filter-picker .skyachievement-picker-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  min-width: 0;
+  min-height: 38px;
+  padding: 8px 11px;
+  border: 1px solid #3b5663;
+  border-radius: 7px;
+  background: linear-gradient(180deg, #1b2731, #131c24);
+  color: #e5edf0;
+  text-align: left;
+  font: 600 11px Manrope, "Segoe UI", sans-serif;
+  cursor: pointer;
+}
+
+#skyachievements .achievement-filter-picker .skyachievement-picker-trigger:hover,
+#skyachievements .achievement-filter-picker .skyachievement-picker-trigger[aria-expanded="true"] {
+  border-color: #62d3dc;
+}
+
+#skyachievements .achievement-filter-picker .skyachievement-picker-trigger span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#skyachievements .achievement-filter-picker .skyachievement-picker-trigger i {
+  flex: none;
+  color: #77dce5;
+  font-size: 15px;
+  font-style: normal;
+}
+
+#skyachievements .achievement-filter-picker .skyachievement-picker-popover {
+  position: absolute;
+  z-index: 60;
+  top: calc(100% + 7px);
+  right: 0;
+  width: min(310px, 86vw);
+  padding: 9px;
+  border: 1px solid #48616d;
+  border-radius: 9px;
+  background: linear-gradient(145deg, #19242d, #10171e);
+  box-shadow: 0 16px 38px #000a, inset 0 1px #ffffff0b;
+}
+
+#skyachievements .achievement-filter-picker .skyachievement-picker-popover[hidden] { display: none; }
+
+#skyachievements .achievement-filter-picker .skyachievement-picker-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 8px;
+  padding: 8px 10px;
+  border: 1px solid #354a56;
+  border-radius: 7px;
+  background: #0d151c;
+  color: #7bd8e2;
+}
+
+#skyachievements .achievement-filter-picker .skyachievement-picker-search input {
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #e8f0f1;
+  font: 10px Manrope, "Segoe UI", sans-serif;
+}
+
+#skyachievements .achievement-filter-picker .skyachievement-picker-options {
+  display: grid;
+  gap: 3px;
+  max-height: 240px;
+  overflow: auto;
+}
+
+#skyachievements .achievement-filter-picker .skyachievement-picker-option {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: #bdc8ce;
+  text-align: left;
+  font: 10px Manrope, "Segoe UI", sans-serif;
+  cursor: pointer;
+}
+
+#skyachievements .achievement-filter-picker .skyachievement-picker-option:hover,
+#skyachievements .achievement-filter-picker .skyachievement-picker-option.selected {
+  border-color: #58c9d866;
+  color: #a3f0f1;
+}
+
+#skyachievements .achievement-filter-picker .skyachievement-picker-empty {
+  padding: 12px 9px;
+  color: #8b9ba5;
+  font-size: 10px;
+  text-align: center;
+}
+
+/* Completed quests read like stamped journal entries instead of plain rows. */
+#skyachievements [data-achievements-panel="quests"] {
+  position: relative;
+  overflow: visible;
+  border-color: #92734277;
+  background:
+    radial-gradient(ellipse at 96% 3%, #b58b3c18, transparent 35%),
+    linear-gradient(145deg, #1b2027, #11171d 72%);
+}
+
+#skyachievements [data-achievements-panel="quests"] .achievement-section-heading {
+  margin-top: 2px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #d0a85a33;
+}
+
+#skyachievements [data-achievements-panel="quests"] .achievement-section-heading h2 {
+  font-size: 21px;
+  letter-spacing: -.02em;
+}
+
+#skyachievements .achievement-quest-record {
+  position: relative;
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) auto;
+  grid-template-rows: auto auto;
+  align-items: center;
+  gap: 4px 13px;
+  min-height: 76px;
+  padding: 13px 15px;
+  border: 1px solid #596773;
+  border-left: 3px solid #c39a50;
+  border-radius: 9px;
+  background:
+    linear-gradient(105deg, #242b31 0%, #1a2228 58%, #171c22 100%);
+  box-shadow: inset 0 1px #ffffff0a;
+}
+
+#skyachievements .achievement-quest-record:hover {
+  border-color: #c2a267;
+  border-left-color: #f0c874;
+}
+
+#skyachievements .achievement-quest-record::before {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid #c29c5b99;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 35%, #554328, #25221d 72%);
+  color: #f0cf88;
+  content: "✓";
+  font: 700 18px "Segoe UI Symbol", sans-serif;
+  box-shadow: 0 0 18px #d5a74b20;
+}
+
+#skyachievements .achievement-quest-record > strong {
+  grid-column: 2;
+  grid-row: 1;
+  color: #f0eee8;
+  font-size: 13px;
+  letter-spacing: .01em;
+}
+
+#skyachievements .achievement-quest-record::after {
+  grid-column: 3;
+  grid-row: 1;
+  padding: 5px 8px;
+  border: 1px solid #b7914d66;
+  border-radius: 99px;
+  background: #322a1d;
+  color: #e9c77e;
+  content: "COMPLETED";
+  font: 700 8px "DM Mono", monospace;
+  letter-spacing: .08em;
+  white-space: nowrap;
+}
+
+#skyachievements .achievement-quest-record .achievement-record-meta {
+  grid-column: 2 / 4;
+  grid-row: 2;
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+#skyachievements .achievement-quest-record .achievement-record-meta small {
+  color: #9daab1;
+  font: 9px "DM Mono", monospace;
+}
+
+@media (max-width: 620px) {
+  #skyachievements:not(.hidden) { grid-template-columns: minmax(125px, 34%) minmax(0, 1fr); gap: 8px; }
+  #skyachievements .skyachievements-tabs { top: 8px; gap: 5px; padding: 6px; }
+  #skyachievements .skyachievements-tabs button { min-height: 38px; padding: 8px; font-size: 9px; }
+  #skyachievements .skyachievements-panel { padding: 11px; }
+  #skyachievements .achievement-filter-picker { width: 100%; }
+  #skyachievements .achievement-filter-picker .skyachievement-picker-popover { left: 0; right: auto; }
+  #skyachievements .achievement-quest-record { grid-template-columns: 40px minmax(0, 1fr); padding: 11px; }
+  #skyachievements .achievement-quest-record::before { width: 36px; height: 36px; }
+  #skyachievements .achievement-quest-record::after { grid-column: 2; grid-row: 2; justify-self: start; }
+  #skyachievements .achievement-quest-record .achievement-record-meta { grid-column: 2; grid-row: 3; }
+}
+
+@media (max-width:700px) {
+  #skyachievements .achievement-player-card { grid-template-columns:54px minmax(0,1fr); gap:11px; padding:13px; }
+  #skyachievements .achievement-player-sigil { width:50px; height:50px; font-size:27px; }
+  #skyachievements .achievement-vitals { grid-column:1/-1; width:100%; }
+  #skyachievements .achievement-section-heading { align-items:flex-start; flex-direction:column; }
+  #skyachievements .achievement-section-heading>span { text-align:left; }
+  #skyachievements .achievement-record-grid { grid-template-columns:repeat(auto-fill,minmax(145px,1fr)); }
+}
+
+/* Character dashboard and the player-owned selections. */
+#skyachievements .skyachievements-panel[hidden] { display:none!important; }
+#skyachievements [data-achievements-panel="dashboard"] { display:grid; gap:14px; padding:0; border:0; background:transparent; }
+#skyachievements .achievement-dashboard-top,
+#skyachievements .achievement-dashboard-bottom,
+#skyachievements .achievement-management-columns { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; align-items:stretch; }
+#skyachievements .achievement-dashboard-card { min-width:0; padding:15px; border:1px solid #596d7d99; border-radius:8px; background:linear-gradient(145deg,#182634,#111923 74%); box-shadow:inset 0 1px #ffffff0a,0 8px 22px #0002; }
+#skyachievements .achievement-player-information { display:flex; flex-direction:column; }
+#skyachievements .achievement-card-heading { display:flex; align-items:center; justify-content:space-between; gap:10px; margin:0 0 12px; padding:0 0 9px; border-bottom:1px solid #72869b3b; }
+#skyachievements .achievement-card-heading h2 { margin:0; color:#d9e9f6; font:700 17px Georgia,serif; }
+#skyachievements .achievement-card-heading>span { color:#8fbdcb; font:8px "DM Mono",monospace; letter-spacing:.1em; text-align:right; }
+#skyachievements .achievement-profile { display:grid; grid-template-columns:minmax(0,56%) minmax(0,1fr); gap:12px; margin-top:11px; flex:1; min-height:0; }
+#skyachievements .achievement-profile-art { display:grid; grid-template-rows:50px minmax(0,1fr); align-content:stretch; gap:8px; min-width:0; min-height:340px; }
+#skyachievements .achievement-nameplate { position:relative; display:grid; place-items:center; justify-self:stretch; width:100%; height:50px; overflow:hidden; border:0; border-radius:0; background:transparent; }
+#skyachievements .achievement-nameplate img { position:absolute; inset:0; width:100%; height:100%; object-fit:fill; }
+#skyachievements .achievement-nameplate img[hidden] { display:none; }
+#skyachievements .achievement-nameplate span { position:relative; z-index:1; max-width:90%; overflow:hidden; color:#f4d28d; font:700 clamp(12px,1.3vw,18px) Georgia,serif; letter-spacing:.08em; text-overflow:ellipsis; text-shadow:0 2px 5px #08111bdd,0 0 12px #101923; white-space:nowrap; }
+#skyachievements .achievement-portrait-frame { position:relative; display:grid; place-items:center; min-width:0; min-height:0; height:100%; overflow:hidden; border:0; border-radius:0; background:transparent; }
+#skyachievements .achievement-portrait-frame.wrong-size { border:1px solid #e6a04b; border-radius:4px; box-shadow:0 0 12px #e6a04b33; }
+#skyachievements .achievement-portrait-frame img { width:100%; height:100%; object-fit:contain; }
+#skyachievements .achievement-portrait-frame img[hidden],#skyachievements #achievement-portrait-fallback[hidden] { display:none; }
+#skyachievements #achievement-portrait-fallback { color:#71899b; font:9px/1.7 "DM Mono",monospace; text-align:center; letter-spacing:.13em; }
+#skyachievements .achievement-profile-stats { display:grid; align-content:start; gap:9px; }
+#skyachievements .achievement-profile-stats>div { display:grid; gap:4px; padding:9px 10px; border:1px solid #526a7c66; border-radius:5px; background:linear-gradient(135deg,#1d2d3c,#15212c); }
+#skyachievements .achievement-profile-stats small { color:#83b9d0; font:8px "DM Mono",monospace; letter-spacing:.13em; }
+#skyachievements .achievement-level strong { color:#f3f4ef; font:700 clamp(24px,3vw,39px) "DM Mono",monospace; line-height:1; }
+#skyachievements .achievement-title-block strong { color:#f0c777; font:700 14px Georgia,serif; }
+#skyachievements .achievement-reputation-block strong { color:#a7e3ef; font:700 21px "DM Mono",monospace; }
+#skyachievements .achievement-rank-block strong { color:#f0c777; font:700 14px Georgia,serif; }
+#skyachievements .achievement-missions-block strong { color:#a7e3ef; font:700 19px "DM Mono",monospace; }
+#skyachievements .achievement-action-list { display:grid; gap:0; max-height:450px; margin:0; padding:0; overflow:auto; list-style:none; scrollbar-color:#426070 #111923; }
+#skyachievements .achievement-action-list li { display:grid; gap:3px; min-height:38px; padding:8px 6px; border-bottom:1px solid #71879a22; }
+#skyachievements .achievement-action-list li:last-child { border:0; }
+#skyachievements .achievement-action-list strong { display:-webkit-box; overflow:hidden; color:#d8e3eb; font-size:11px; font-weight:600; line-height:1.4; -webkit-box-orient:vertical; -webkit-line-clamp:2; }
+#skyachievements .achievement-action-list small { overflow:hidden; color:#7e98a8; font:8px "DM Mono",monospace; text-overflow:ellipsis; white-space:nowrap; }
+#skyachievements .achievement-action-list .empty { color:#8999a5; text-align:center; }
+#skyachievements .achievement-achievement-carousel { display:grid; grid-template-columns:32px minmax(0,1fr) 32px; align-items:center; gap:8px; }
+#skyachievements .achievement-carousel-arrow,#skyachievements .achievement-vertical-arrow { display:grid; place-items:center; width:32px; height:38px; border:1px solid #718da377; border-radius:5px; background:#14212c; color:#8ce0ee; font:700 25px/1 Georgia,serif; cursor:pointer; }
+#skyachievements .achievement-carousel-arrow:hover,#skyachievements .achievement-vertical-arrow:hover { border-color:#83e4ee; }
+#skyachievements .achievement-achievement-track { display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:9px; min-width:0; }
+#skyachievements .achievement-showcase-card { display:grid; grid-template-rows:minmax(76px,1fr) auto; gap:6px; min-width:0; text-align:center; }
+#skyachievements .achievement-showcase-card img { width:100%; height:92px; padding:4px; object-fit:contain; border:1px solid #61778677; border-radius:6px; background:radial-gradient(ellipse,#274452,#121c25 72%); }
+#skyachievements .achievement-showcase-card span { display:-webkit-box; overflow:hidden; color:#cedbe4; font:10px/1.35 Georgia,serif; -webkit-box-orient:vertical; -webkit-line-clamp:2; }
+#skyachievements .achievement-basic-information { align-self:start; }
+#skyachievements .achievement-gender-row { display:flex; align-items:center; gap:9px; min-height:35px; padding:0 10px 8px; color:#96d9f0; font:10px "DM Mono",monospace; }
+#skyachievements .achievement-gender-icon { color:#54b9f4; font:700 24px/1 "Segoe UI Symbol",sans-serif; text-shadow:0 0 12px #168bdd88; }
+#skyachievements .achievement-basic-list { margin:0; border:1px solid #52677a55; border-radius:5px; overflow:hidden; }
+#skyachievements .achievement-basic-list>div { display:grid; grid-template-columns:minmax(110px,38%) minmax(0,1fr); gap:8px; min-height:28px; padding:5px 9px; background:#1c2a38; }
+#skyachievements .achievement-basic-list>div:nth-child(even) { background:#152230; }
+#skyachievements .achievement-basic-list dt { color:#91aabd; font-size:10px; }
+#skyachievements .achievement-basic-list dd { overflow:hidden; margin:0; color:#e4ebf0; font-size:10px; font-weight:600; text-overflow:ellipsis; white-space:nowrap; }
+#skyachievements .achievement-marital-editor { display:grid; grid-template-columns:minmax(112px,1fr) minmax(100px,1fr) auto; align-items:end; gap:7px; margin-top:9px; }
+#skyachievements .achievement-marital-picker { width:100%; min-width:0; }
+#skyachievements .achievement-marital-editor input,#skyachievements .achievement-property-add input { min-width:0; min-height:38px; padding:7px 8px; border:1px solid #526d7d; border-radius:7px; background:#0e1821; color:#e0ebf0; font:10px "Segoe UI",sans-serif; }
+#skyachievements .achievement-marital-editor input:disabled { opacity:.45; }
+#skyachievements .achievement-marital-editor button,#skyachievements .achievement-property-add button,#skyachievements .achievement-choice-row button,#skyachievements .achievement-catalog-card button { padding:7px 9px; border:1px solid #5f9aa6; border-radius:4px; background:linear-gradient(120deg,#17343d,#1a2933); color:#a6e5eb; font:700 9px "Segoe UI",sans-serif; cursor:pointer; }
+#skyachievements .achievement-marital-editor button:hover,#skyachievements .achievement-property-add button:hover,#skyachievements .achievement-choice-row button:hover,#skyachievements .achievement-catalog-card button:hover { border-color:#a5eaf0; }
+#skyachievements .achievement-marital-editor button:disabled,#skyachievements .achievement-choice-row button:disabled,#skyachievements .achievement-catalog-card button:disabled { opacity:.62; cursor:default; }
+#skyachievements .achievement-name-card-carousel { display:grid; grid-template-rows:24px auto 24px; align-items:center; justify-items:center; gap:4px; }
+#skyachievements .achievement-vertical-arrow { width:36px; height:24px; font:10px "Segoe UI Symbol",sans-serif; }
+#skyachievements .achievement-name-card-list { display:grid; justify-items:center; align-content:start; gap:5px; width:100%; }
+#skyachievements .achievement-name-card-row { position:relative; display:grid; justify-items:center; gap:2px; width:100%; padding:2px; overflow:visible; border:0; border-radius:0; background:transparent; color:#e4edf0; cursor:pointer; }
+#skyachievements .achievement-name-card-row.selected { border-color:#e5bc70; box-shadow:0 0 12px #d5a1462a; }
+#skyachievements .achievement-name-card-row.selected .achievement-name-card-art { filter:drop-shadow(0 0 8px #d5a14688); }
+#skyachievements .achievement-name-card-art { position:relative; display:block; overflow:hidden; width:min(288px,100%); aspect-ratio:3/1; background:transparent; }
+#skyachievements .achievement-name-card-art img { display:block; width:100%; height:100%; object-fit:contain; }
+#skyachievements .achievement-name-card-row>strong { max-width:100%; padding:2px 6px 0; color:#d8e4ea; font:600 10px/1.35 Georgia,serif; overflow-wrap:anywhere; text-align:center; }
+#skyachievements .achievement-name-card-gallery { display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:12px; }
+#skyachievements .achievement-name-card-option { position:relative; display:grid; justify-items:center; grid-template-rows:auto auto auto; gap:6px; padding:4px; border:0; border-radius:0; background:transparent; color:#e3ebf0; text-align:center; cursor:pointer; }
+#skyachievements .achievement-name-card-option.selected { filter:drop-shadow(0 0 7px #d5a14688); }
+#skyachievements .achievement-name-card-option .achievement-name-card-art { width:min(288px,100%); aspect-ratio:3/1; border-radius:0; }
+#skyachievements .achievement-name-card-option>strong { color:#f2d393; font:700 13px Georgia,serif; }
+#skyachievements .achievement-name-card-action { color:#87cad6; font:9px "DM Mono",monospace; }
+#skyachievements .achievement-name-card-option.locked { opacity:.78; }
+#skyachievements .achievement-name-card-option.locked .achievement-name-card-art img { filter:grayscale(.75) brightness(.6); }
+#skyachievements .achievement-name-card-option.locked .achievement-name-card-action { color:#e5bc70; }
+#skyachievements .achievement-name-card-action { grid-row:3; }
+#skyachievements .achievement-catalog-section { margin-bottom:13px; }
+#skyachievements .achievement-catalog-section:last-child { margin-bottom:0; }
+#skyachievements .achievement-catalog-section .achievement-record-grid { grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); }
+#skyachievements .achievement-catalog-card { display:grid; grid-template-rows:minmax(112px,140px) auto auto; align-content:start; gap:9px; min-width:0; width:100%; padding:10px; border:1px solid #60758a88; border-radius:6px; background:linear-gradient(145deg,#1d2a39,#131c26); color:#e4edf2; font:inherit; text-align:left; cursor:pointer; }
+#skyachievements .achievement-catalog-card:hover { border-color:#82b6c1; }
+#skyachievements .achievement-catalog-card:focus-visible { outline:2px solid #83e0e5; outline-offset:2px; }
+#skyachievements .achievement-catalog-card img { width:100%; height:100%; min-height:112px; max-height:140px; padding:6px; object-fit:contain; border-radius:4px; background:radial-gradient(ellipse,#273c4b,#101923 72%); }
+#skyachievements .achievement-catalog-card strong { align-self:center; color:#e4edf2; font:700 11px/1.35 Georgia,serif; }
+#skyachievements .achievement-catalog-card.is-locked img { filter:saturate(.76) brightness(.82); }
+#skyachievements .achievement-catalog-card.is-unlocked { border-color:#b18c4c88; background:linear-gradient(145deg,#282b2d,#151d26); }
+#skyachievements .achievement-catalog-progress { height:7px; overflow:hidden; border:1px solid #354b5a; border-radius:5px; background:#0d151d; }
+#skyachievements .achievement-catalog-progress span { display:block; height:100%; border-radius:inherit; background:linear-gradient(90deg,#42b6c5,#e5ba67); }
+#skyachievements .achievement-catalog-status { color:#89a4b2; font:8px/1.45 "DM Mono",monospace; }
+.achievement-detail-dialog { width:min(760px,calc(100vw - 32px)); max-width:none; max-height:min(82vh,720px); padding:0; overflow:auto; border:1px solid #92784f; border-radius:10px; background:#111b26; color:#e7edf0; box-shadow:0 24px 80px #000c,0 0 28px #6acbd322; }
+.achievement-detail-dialog::backdrop { background:#05090dcc; }
+.achievement-detail-shell { position:relative; display:grid; grid-template-columns:minmax(180px,35%) minmax(0,1fr); align-items:center; gap:22px; padding:24px; }
+.achievement-detail-close { position:absolute; top:10px; right:10px; width:32px; height:32px; border:1px solid #506475; border-radius:5px; background:#172431; color:#d8e7ed; font-size:20px; cursor:pointer; }
+.achievement-detail-image { display:block; width:100%; max-height:360px; object-fit:contain; border:1px solid #4c6170; border-radius:7px; background:radial-gradient(ellipse,#283b4c,#0f1821 74%); }
+.achievement-detail-copy { min-width:0; padding-right:24px; }
+.achievement-detail-copy .eyebrow { margin:0 0 8px; color:#d7b56e; font:9px "DM Mono",monospace; letter-spacing:.18em; }
+.achievement-detail-copy h2 { margin:0 0 12px; color:#f0d18b; font:700 clamp(20px,3vw,29px)/1.2 Georgia,serif; }
+.achievement-detail-requirements { margin:0; color:#c4d0d8; font-size:13px; line-height:1.6; }
+.achievement-detail-progress-section { display:grid; gap:9px; margin-top:22px; }
+.achievement-detail-progress-label { display:flex; justify-content:space-between; gap:12px; color:#8fb3c3; font:10px "DM Mono",monospace; }
+.achievement-detail-progress-label strong { color:#f0d18b; }
+.achievement-detail-progress { height:10px; }
+.achievement-detail-unlocked-status { margin:22px 0 0; color:#8fe0c2; font:600 11px "DM Mono",monospace; }
+.achievement-detail-unlocked-status[hidden] { display:none; }
+@media(max-width:560px) { .achievement-detail-shell { grid-template-columns:minmax(0,1fr); gap:14px; padding:18px; } .achievement-detail-image { width:min(100%,260px); height:210px; margin:auto; } .achievement-detail-copy { padding:0; } }
+#skyachievements .achievement-management-columns { align-items:start; }
+#skyachievements .achievement-choice-list { display:grid; gap:7px; }
+#skyachievements .achievement-choice-row { display:flex; align-items:center; justify-content:space-between; gap:12px; min-width:0; padding:10px; border:1px solid #52697a66; border-radius:5px; background:#121e29; }
+#skyachievements .achievement-choice-row>div:first-child { display:grid; gap:4px; min-width:0; }
+#skyachievements .achievement-choice-row strong { overflow:hidden; color:#e4edf0; font-size:11px; text-overflow:ellipsis; }
+#skyachievements .achievement-choice-row small { color:#849dac; font:8px "DM Mono",monospace; }
+#skyachievements .achievement-choice-controls { display:flex; flex-wrap:wrap; justify-content:flex-end; gap:6px; }
+#skyachievements .achievement-choice-row button.subtle { border-color:#57636d; background:#19222a; color:#a5b2b9; }
+#skyachievements .achievement-property-manager>p { margin:0 0 13px; color:#9eb0bd; font-size:11px; }
+#skyachievements .achievement-property-add { display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center; gap:8px; margin-bottom:14px; }
+#skyachievements .achievement-property-add label { color:#95a9b5; font-size:10px; }
+#skyachievements .achievement-property-add input { width:100%; }
+#skyachievements .achievement-property-manager>.achievement-choice-list { max-width:820px; }
+#skyachievements [data-achievements-panel="achievements"]>.achievement-section-heading { margin-bottom:14px; }
+#skyachievements [data-achievements-panel="achievements"] .achievement-record-grid .empty { grid-column:1/-1; }
+#skyachievements .achievement-mission-summary { display:flex; gap:10px; margin:0 0 14px; }
+#skyachievements .achievement-mission-summary strong { padding:8px 12px; border:1px solid #68788766; border-radius:5px; background:#172430; color:#f0d091; font:600 10px "DM Mono",monospace; }
+#skyachievements .achievement-mission-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+#skyachievements .achievement-mission-card { display:grid; align-content:start; gap:10px; min-width:0; padding:15px; border:1px solid #8f744477; border-radius:8px; background:radial-gradient(ellipse at 80% 0,#d6a84c1a,transparent 46%),linear-gradient(145deg,#202b35,#111923); box-shadow:inset 0 1px #ffffff0b,0 9px 20px #0002; }
+#skyachievements .achievement-mission-card.accepted { border-color:#5db8bc99; }
+#skyachievements .achievement-mission-card h3 { margin:0; color:#f0d091; font:700 15px Georgia,serif; }
+#skyachievements .achievement-mission-card p { min-height:34px; margin:0; color:#afbec8; font-size:11px; line-height:1.5; }
+#skyachievements .achievement-mission-progress { height:8px; overflow:hidden; border-radius:5px; background:#0b131a; }
+#skyachievements .achievement-mission-progress span { display:block; height:100%; border-radius:5px; background:linear-gradient(90deg,#41b7c4,#e4c06d); transition:width .2s ease; }
+#skyachievements .achievement-mission-meta { display:flex; justify-content:space-between; gap:8px; color:#8cb9c6; font:9px "DM Mono",monospace; }
+#skyachievements .achievement-mission-card button { justify-self:start; padding:8px 12px; border:1px solid #66b8c1; border-radius:5px; background:linear-gradient(120deg,#17343d,#1a2933); color:#a8eced; font:700 10px "Segoe UI",sans-serif; cursor:pointer; }
+#skyachievements .achievement-mission-card button:disabled { opacity:.7; cursor:default; }
+#achievement-mission-toast { position:fixed; z-index:200; left:50%; bottom:34px; width:min(460px,calc(100vw - 36px)); padding:15px 20px; transform:translateX(-50%); border:1px solid #e1ba69; border-radius:9px; background:linear-gradient(140deg,#26394a,#121b24); box-shadow:0 0 0 1px #1b2732,0 12px 40px #000b,0 0 24px #dcb05233; color:#eaf0f2; text-align:center; }
+#achievement-mission-toast[hidden] { display:none; }
+#achievement-mission-toast strong { display:block; margin-bottom:5px; color:#f2d18a; font:700 18px Georgia,serif; }
+#achievement-mission-toast span { color:#a8dbe2; font:11px "DM Mono",monospace; }
+@media(max-width:900px) {
+  #skyachievements .achievement-profile { grid-template-columns:minmax(0,48%) minmax(0,1fr); }
+  #skyachievements .achievement-achievement-track { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  #skyachievements .achievement-showcase-card:nth-child(n+4) { display:none; }
+}
+@media(max-width:760px) { #skyachievements .achievement-mission-grid { grid-template-columns:minmax(0,1fr); } }
+@media(max-width:700px) {
+  #skyachievements .achievement-dashboard-top,#skyachievements .achievement-dashboard-bottom,#skyachievements .achievement-management-columns { grid-template-columns:minmax(0,1fr); }
+  #skyachievements .achievement-dashboard-card { padding:11px; }
+  #skyachievements .achievement-achievement-track { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  #skyachievements .achievement-showcase-card:nth-child(n+3) { display:none; }
+  #skyachievements .achievement-marital-editor { grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto; }
+  #skyachievements .achievement-property-add { grid-template-columns:minmax(0,1fr) auto; }
+  #skyachievements .achievement-property-add label { grid-column:1/-1; }
+}
+

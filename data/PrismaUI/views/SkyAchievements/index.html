@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SkyAchievements</title>
+  <link rel="stylesheet" href="../SkyOS/style.css?v=20261023-achievements-missions-5">
+  <link rel="stylesheet" href="../SkyOS/app-branding.css?v=20261023-achievements-missions-5">
+  <link rel="stylesheet" href="skyachievements.css?v=20261025-achievement-ui-2">
+</head>
+<body>
+  <div id="skyachievements" class="page" data-surface="achievements">
+    <div class="page-heading brand-heading skyachievements-heading">
+      <img class="page-banner skyachievements-banner" src="skyachievements-banner.png" alt="">
+      <div class="page-title"><img class="page-logo skyachievements-logo" src="skyachievements-logo.png" alt="SkyAchievements logo">
+        <div><p class="eyebrow">YOUR ADVENTURE RECORD</p><h1>SkyAchievements</h1><p class="subheading">A save-specific record of your character, battles, discoveries, and completed quests.</p></div>
+      </div>
+    </div>
+    <nav id="skyachievements-tabs" class="skyachievements-tabs" role="tablist" aria-label="SkyAchievements sections">
+      <button type="button" class="active" data-achievements-tab="achievements" aria-pressed="true">Achievements</button>
+      <button type="button" data-achievements-tab="lifetime" aria-pressed="false">Lifetime Records</button>
+      <button type="button" data-achievements-tab="quests" aria-pressed="false">Quests Completed</button>
+      <button type="button" data-achievements-tab="locations" aria-pressed="false">Locations Discovered</button>
+      <button type="button" data-achievements-tab="items" aria-pressed="false">Items Discovered</button>
+    </nav>
+    <section class="skyachievements-panel" data-achievements-panel="achievements">
+      <header class="achievement-section-heading"><div><p class="eyebrow">COLLECTION OF DEEDS</p><h2>Achievements</h2></div><span id="achievement-tab-summary">Waiting for save data…</span></header>
+      <section class="achievement-dashboard-card achievement-catalog-section"><header class="achievement-card-heading"><h2>Locked Achievements</h2><span id="achievement-catalog-locked-count">0 locked</span></header><div id="achievement-locked-grid" class="achievement-record-grid"></div></section>
+      <section class="achievement-dashboard-card achievement-catalog-section"><header class="achievement-card-heading"><h2>Unlocked Achievements</h2><span id="achievement-catalog-unlocked-count">0 unlocked</span></header><div id="achievement-unlocked-grid" class="achievement-record-grid"></div></section>
+    </section>
+
+    <section class="skyachievements-panel" data-achievements-panel="lifetime" hidden>
+      <header class="achievement-section-heading"><div><p class="eyebrow">LIFETIME RECORD</p><h2>Adventure counters</h2></div><span id="achievement-record-note">Loading save data…</span></header>
+      <div id="achievement-counter-highlights" class="achievement-counter-highlights" aria-label="Record highlights"></div>
+      <div id="achievement-counter-groups" class="achievement-counter-groups"><div class="empty">Waiting for save data…</div></div>
+    </section>
+
+    <section class="skyachievements-panel" data-achievements-panel="quests" hidden>
+      <header class="achievement-section-heading"><div><p class="eyebrow">QUEST JOURNAL</p><h2>Quests completed</h2></div><span id="achievement-quest-count">0 quests</span></header>
+      <div class="achievement-filters"><div class="skyachievement-picker achievement-filter-picker" data-skyachievement-picker="achievement-quest-plugin"><label class="skyachievement-picker-label">Plugin</label><button type="button" class="skyachievement-picker-trigger" aria-haspopup="listbox" aria-expanded="false"><span>All plugins</span><i aria-hidden="true">⌄</i></button><div class="skyachievement-picker-popover" hidden><label class="skyachievement-picker-search"><span aria-hidden="true">⌕</span><input type="search" autocomplete="off" placeholder="Search plugins…" aria-label="Search quest plugins"></label><div class="skyachievement-picker-options" role="listbox" aria-label="Quest plugins"></div></div></div></div>
+      <div id="achievement-quests" class="achievement-record-list"><div class="empty">Completed quests from the active save will appear here.</div></div>
+    </section>
+
+    <section class="skyachievements-panel" data-achievements-panel="locations" hidden>
+      <header class="achievement-section-heading"><div><p class="eyebrow">WORLD MAP</p><h2>Locations discovered</h2></div><span id="achievement-location-count">0 locations</span></header>
+      <div class="achievement-filters"><div class="skyachievement-picker achievement-filter-picker" data-skyachievement-picker="achievement-location-plugin"><label class="skyachievement-picker-label">Plugin</label><button type="button" class="skyachievement-picker-trigger" aria-haspopup="listbox" aria-expanded="false"><span>All plugins</span><i aria-hidden="true">⌄</i></button><div class="skyachievement-picker-popover" hidden><label class="skyachievement-picker-search"><span aria-hidden="true">⌕</span><input type="search" autocomplete="off" placeholder="Search plugins…" aria-label="Search location plugins"></label><div class="skyachievement-picker-options" role="listbox" aria-label="Location plugins"></div></div></div></div>
+      <div id="achievement-locations" class="achievement-record-grid"><div class="empty">Discover a map marker to add its location.</div></div>
+      <button id="achievement-location-load-more" class="achievement-load-more" type="button" hidden>Load 50 more locations</button>
+    </section>
+
+    <section class="skyachievements-panel" data-achievements-panel="items" hidden>
+      <header class="achievement-section-heading"><div><p class="eyebrow">COLLECTION LOG</p><h2>Items discovered</h2></div><span id="achievement-item-count">0 items</span></header>
+      <div class="achievement-filters">
+        <div class="skyachievement-picker achievement-filter-picker" data-skyachievement-picker="achievement-item-plugin"><label class="skyachievement-picker-label">Plugin</label><button type="button" class="skyachievement-picker-trigger" aria-haspopup="listbox" aria-expanded="false"><span>All plugins</span><i aria-hidden="true">⌄</i></button><div class="skyachievement-picker-popover" hidden><label class="skyachievement-picker-search"><span aria-hidden="true">⌕</span><input type="search" autocomplete="off" placeholder="Search plugins…" aria-label="Search item plugins"></label><div class="skyachievement-picker-options" role="listbox" aria-label="Item plugins"></div></div></div>
+        <div class="skyachievement-picker achievement-filter-picker" data-skyachievement-picker="achievement-item-rarity"><label class="skyachievement-picker-label">Rarity</label><button type="button" class="skyachievement-picker-trigger" aria-haspopup="listbox" aria-expanded="false"><span>All rarities</span><i aria-hidden="true">⌄</i></button><div class="skyachievement-picker-popover" hidden><label class="skyachievement-picker-search"><span aria-hidden="true">⌕</span><input type="search" autocomplete="off" placeholder="Search rarities…" aria-label="Search item rarity"></label><div class="skyachievement-picker-options" role="listbox" aria-label="Item rarities"></div></div></div>
+      </div>
+      <div id="achievement-items" class="achievement-record-grid"><div class="empty">Discovered items will appear here.</div></div>
+      <button id="achievement-item-load-more" class="achievement-load-more" type="button" hidden>Load 50 more items</button>
+    </section>
+    <dialog id="achievement-detail-dialog" class="achievement-detail-dialog" aria-labelledby="achievement-detail-name">
+      <div class="achievement-detail-shell">
+        <button id="achievement-detail-close" class="achievement-detail-close" type="button" aria-label="Close achievement details">×</button>
+        <img id="achievement-detail-image" class="achievement-detail-image" alt="">
+        <div class="achievement-detail-copy">
+          <p class="eyebrow">ACHIEVEMENT RECORD</p>
+          <h2 id="achievement-detail-name"></h2>
+          <p id="achievement-detail-requirements" class="achievement-detail-requirements"></p>
+          <section id="achievement-detail-progress-section" class="achievement-detail-progress-section">
+            <div class="achievement-detail-progress-label"><span>Progress</span><strong id="achievement-detail-progress-copy"></strong></div>
+            <div id="achievement-detail-progress" class="achievement-catalog-progress" role="progressbar" aria-label="Achievement progress" aria-valuemin="0" aria-valuemax="1" aria-valuenow="0"><span id="achievement-detail-progress-fill"></span></div>
+            <small id="achievement-detail-progress-status" class="achievement-catalog-status"></small>
+          </section>
+          <p id="achievement-detail-status" class="achievement-detail-unlocked-status" hidden>Unlocked</p>
+        </div>
+      </div>
+    </dialog>
+  </div>
+  <script defer src="achievement-rules.js?v=20261025-achievement-unlocks-1"></script>
+  <script defer src="app.js?v=20261025-achievement-ui-2"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "name": "SkyAchievements",
+  "plugin": "SkyAchievements.dll",
+  "requiredCore": "SkyOS.dll",
+  "viewerModule": "Data/SKSE/Plugins/SkyOS/Mods/SkyViewer/SkyAchievements/module.json",
+  "documents": "Data/SKSE/Plugins/SkyOS/Mods/SkyAchievements/SkyDocuments",
+  "settingsStorage": "%LOCALAPPDATA%/SkyOS/SkyViewer/SkyAchievements/settings.json",
+  "dataStorage": "Achievement artwork and adventure-history records remain owned by SkyAchievements. SkyRewrite and SkyCollection supply optional history, item, and location data. The character dashboard, missions, properties, factions, name cards, and SkyStore are owned by the separate SkyMissions app."
+}
