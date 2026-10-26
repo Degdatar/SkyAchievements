@@ -7,7 +7,7 @@ SkyAchievements is a SkyOS app module for achievement artwork, progress, unlock 
 - Browse locked and unlocked achievements, view their requirements, and track progress.
 - Save achievement progress and unlocks per character in the local SkyOS profile.
 - Read player level and faction membership from the active Skyrim character.
-- Use optional SkyRewrite history for quest completions, creature counters, brawl wins, gold tracking, and named actions.
+- Use SkyRewrite history for quest completions, creature counters, brawl wins, gold tracking, and named actions.
 - Use optional SkyCollection data for discovered items and locations.
 - Configure the in-game unlock message through the SkyViewer module settings.
 
